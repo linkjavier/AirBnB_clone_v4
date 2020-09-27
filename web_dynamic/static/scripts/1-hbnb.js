@@ -1,12 +1,17 @@
+const $ = window.$;
 $(document).ready(function () {
   const amenities = {};
   $('input[type=checkbox]').change(function () {
     if (this.checked) {
-      amenities[$(this).attr('data-id')] = $(this).attr('data-name');
+      amenities[$(this).data('id')] = $(this).data('name');
     } else {
-      delete amenities[$(this).attr('data-id')];
+      delete amenities[$(this).data('id')];
     }
     const amenichecked = Object.values(amenities);
-    $('div.amenities > h4').text(amenichecked.join(', '));
+    if (amenichecked.length > 0) {
+    $('div.amenities > h4').text(Object.values(amenities).join(', '));
+    } else {
+      $('div.amenities > h4').html('&nbsp;');
+    }
   });
 });
