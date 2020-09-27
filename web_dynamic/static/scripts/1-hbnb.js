@@ -9,7 +9,9 @@ $(document).ready(function () {
     }
     const amenichecked = Object.values(amenities);
     if (amenichecked.length > 0) {
-    $('div.amenities > h4').text(Object.values(amenities).join(', '));
+      const allamenichecked = amenichecked.join(', ');
+      const fewamenities = allamenichecked.slice(0, 30)
+      $('div.amenities > h4').text(fewamenities + '...');
     } else {
       $('div.amenities > h4').html('&nbsp;');
     }
